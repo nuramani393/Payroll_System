@@ -1,0 +1,66 @@
+<!-- <!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="scaffolded-by" content="https://github.com/dart-lang/sdk">
+    <title>payroll_system</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="main.dart.js"></script>
+</head>
+
+<body>
+
+  <div id="output"></div>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Payroll Management System</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>Payroll Management System</h1>
+    <form>
+      <label for="employee-name">Employee Name:</label>
+      <input type="text" id="employee-name" required>
+      <label for="id">ID Number:</label>
+			<input type="text" id="id" name="id" required>
+      <label for="working-hours">Working Hours:</label>
+      <input type="number" id="working-hours" min="0" required><br>
+      <label for="start-date">Date:</label>
+      <input type="date" id="start-date" required>
+      <label for="start-time">Start Time:</label>
+      <input type="time" id="start-time" required>
+      <label for="end-time">End Time:</label>
+      <input type="time" id="end-time" required>
+      <br><br>
+      <input type="submit" value="Calculate Pay">
+    </form>
+    <table>
+			<thead>
+				<tr>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Hours Worked</th>
+                    <th>Payable Amount</th>
+                    <th>EPF Contribution</th>
+				</tr>
+			</thead>
+			<tbody id="employeeTable">
+			</tbody>
+		</table>
+    <script defer src="main.dart.js"></script>
+  </body>
+</html>
+
+
+
+
