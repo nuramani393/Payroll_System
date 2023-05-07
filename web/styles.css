@@ -36,7 +36,7 @@ body {
   width: 100%;
   }
 
-  form input[type="submit"] {
+  form input[type="submit"],p {
   background-color: #1b1b1b;
    color: #fff;
    cursor: pointer;
