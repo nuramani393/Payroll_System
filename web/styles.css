@@ -21,8 +21,10 @@ body {
   border-radius: 5px;
   }
 
-  form input[type="text"],
-  form input[type="number"],
+  /* form input[type="text"],
+  form input[type="number"], */
+  form input[type="date"],
+  form input[type="time"],
   form input[type="submit"] {
    display: block;
    margin: 10px 0;
