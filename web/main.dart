@@ -19,6 +19,11 @@ void main() {
     'payment': ''
   };
 
+  double salary = 0;
+  double totalduration = 0;
+  double epf = 0;
+  double netsalary = 0;
+
   form!.onSubmit.listen((event) {
     // Prevent the form from submitting
     event.preventDefault();
@@ -40,34 +45,43 @@ void main() {
     data['duration'] = durationStr;
 
     //Calculation payment per day
-    // double paymentperday = double.parse(durationStr) * 6;
-    // data['payment'] = paymentperday.toString();
+    double paymentperday = double.parse(durationStr) * 6;
+    data['payment'] = paymentperday.toString();
 
+    //add map to list
     dataList.add(data);
 
-    // Get the table body element
+    // Get the table body element and display map
     var table = querySelector('#WorkingHours') as TableSectionElement;
     var newRow = table.insertRow(-1); // -1 means "insert at the end"
     newRow.insertCell(0).text = data['date']!;
     newRow.insertCell(1).text = data['start']!;
     newRow.insertCell(2).text = data['end']!;
     newRow.insertCell(3).text = data['duration']!;
-    // newRow.insertCell(4).text = data['payment']!;
+    newRow.insertCell(4).text = data['payment']!;
   });
 
   //Calculation
-
   var buttonCalc = querySelector('#calcbutton') as ButtonElement;
 
   buttonCalc.onClick.listen((event) {
-    // var table = querySelector('#calc') as TableSectionElement;
-    //
-    //   var newRow = table.insertRow(-1);
-    //   newRow.insertCell(0).text = data[''];
-    //   newRow.insertCell(1).text = data['start'];
-    //   newRow.insertCell(2).text = data['end'];
-    // }
-  });
+    for (var data in dataList) {
+      salary += double.parse(data['payment']!);
+      // totalduration += double.parse(data['duration']!);
+    }
+    for (var data in dataList) {
+      // salary += double.parse(data['payment']!);
+      totalduration += double.parse(data['duration']!);
+    }
 
-  // var outputDiv = querySelector('#output') as OutputElement;
+    epf = salary * 0.11;
+    netsalary = salary - epf;
+
+    var table = querySelector('#calc') as TableSectionElement;
+    var newRow = table.insertRow(-1);
+    newRow.insertCell(0).text = totalduration.toString();
+    newRow.insertCell(1).text = salary.toString();
+    newRow.insertCell(2).text = epf.toString();
+    newRow.insertCell(3).text = netsalary.toString();
+  });
 }
