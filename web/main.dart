@@ -68,12 +68,10 @@ void main() {
 
   buttonCalc.onClick.listen((event) {
     for (var data in dataList) {
-      salary += double.parse(data['payment']!);
-      // totalduration += double.parse(data['duration']!);
+      salary += double.parse(data['payment'] ?? '0');
     }
     for (var data in dataList) {
-      // salary += double.parse(data['payment']!);
-      totalduration += double.parse(data['duration']!);
+      totalduration += double.parse(data['duration'] ?? '0');
     }
 
     epf = salary * 0.11;
