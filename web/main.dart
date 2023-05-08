@@ -1,9 +1,11 @@
+/*
+NUR AMANINA 2011402
+NUR ATHIRAH 2011156
+NIK NURUL FAKHRIWANI 1911480 
+*/
 import 'dart:html';
-//import 'dart:ui';
 
 void main() {
-  // declare growable list
-
   // Get the form element and submit button
   var form = querySelector('form');
 
