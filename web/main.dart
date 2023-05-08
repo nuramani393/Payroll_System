@@ -8,8 +8,7 @@ void main() {
   DateInputElement startDate = querySelector('#start-date') as DateInputElement;
   TimeInputElement startTime = querySelector('#start-time') as TimeInputElement;
   TimeInputElement endTime = querySelector('#end-time') as TimeInputElement;
-  ButtonElement saveButton =
-      querySelector('input[type="submit"]') as ButtonElement;
+  ButtonElement saveButton = querySelector('#save') as ButtonElement;
 
   // TableElement workingHours = querySelector('#employeeTable') as TableElement;
 
