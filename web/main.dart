@@ -9,23 +9,15 @@ void main() {
   // Get the form element and submit button
   var form = querySelector('form');
 
-  //list of map
+  // List of maps
   List<Map<String, String>> dataList = [];
-
-  // Create a data object with the input values
-  Map<String, String> data = {
-    'date': '',
-    'start': '',
-    'end': '',
-    'duration': '',
-    'payment': ''
-  };
 
   double salary = 0;
   double totalduration = 0;
   double epf = 0;
   double netsalary = 0;
 
+  // Submit event listener
   form!.onSubmit.listen((event) {
     // Prevent the form from submitting
     event.preventDefault();
@@ -35,22 +27,27 @@ void main() {
     var startTimeValue = querySelector('#start-time') as InputElement;
     var endTimeValue = querySelector('#end-time') as InputElement;
 
-    data['date'] = dateValue.value!;
-    data['start'] = startTimeValue.value!;
-    data['end'] = endTimeValue.value!;
+    // Create a new data object with the input values
+    Map<String, String> data = {
+      'date': dateValue.value!,
+      'start': startTimeValue.value!,
+      'end': endTimeValue.value!,
+      'duration': '',
+      'payment': ''
+    };
 
-    //Calculation to get duration of working hours
+    // Calculation to get duration of working hours
     DateTime startTime = DateTime.parse('1970-01-01 ${data['start']}:00');
     DateTime endTime = DateTime.parse('1970-01-01 ${data['end']}:00');
     Duration duration = endTime.difference(startTime);
     String durationStr = (duration.inSeconds / 3600).toStringAsFixed(2);
     data['duration'] = durationStr;
 
-    //Calculation payment per day
+    // Calculation payment per day
     double paymentperday = double.parse(durationStr) * 6;
     data['payment'] = paymentperday.toString();
 
-    //add map to list
+    // Add map to list
     dataList.add(data);
 
     // Get the table body element and display map
@@ -63,15 +60,13 @@ void main() {
     newRow.insertCell(4).text = data['payment']!;
   });
 
-  //Calculation
+  // Calculation event listener
   var buttonCalc = querySelector('#calcbutton') as ButtonElement;
 
   buttonCalc.onClick.listen((event) {
     for (var data in dataList) {
-      salary += double.parse(data['payment'] ?? '0');
-    }
-    for (var data in dataList) {
-      totalduration += double.parse(data['duration'] ?? '0');
+      salary += double.parse(data['payment']!);
+      totalduration += double.parse(data['duration']!);
     }
 
     epf = salary * 0.11;
