@@ -1,48 +1,50 @@
 <!DOCTYPE html>
+
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="scaffolded-by" content="https://github.com/dart-lang/sdk">
-    <meta charset="UTF-8">
-    <title>Payroll Management System</title>
+    <title>trialpayroll</title>
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <header>
-    <h1>Payroll Management System</h1>
-  </header>
-    <form>
-      
-      <label for="start-date">Date:</label>
-      <input type="date" id="start-date" required><br>
-      <label for="start-time">Start Time:</label>
-      <input type="time" id="start-time" required><br>
-      <label for="end-time">End Time:</label>
-      <input type="time" id="end-time" required>
-      <br>
-      <input type="submit" id="save" value="Save">
-    </form>
-
-    <div id="output"></div>
-
-    <table>
-			<thead>
-				<tr>
-                    <th>No</th>
-                    <th>Date</th>
-                    <th>Hours Worked</th> <!-- based on calculation endtime-startime -->
-                    <th>Payable Amount</th>
-				</tr>
-			</thead>
-      <!-- Show Table -->
-			<tbody id="WorkingHours"> 
-			</tbody>
-		</table>
     <script defer src="main.dart.js"></script>
-  </body>
+</head> 
+
+<body>
+  <header>
+  <h1>Payroll Management System</h1>
+  </header>
+   <form>
+    
+    <label for="start-date">Date:</label>
+    <input type="date" id="start-date" required><br>
+    <label for="start-time">Start Time:</label>
+    <input type="time" id="start-time" required><br>
+    <label for="end-time">End Time:</label>
+    <input type="time" id="end-time" required>
+    <br>
+    <input type="submit" id="save" value="Save">
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+                  <!-- <th>No</th> -->
+                  <th>Date</th>
+                  <th>start-time</th>
+                  <th>end-time</th>
+                  <!-- <th>Hours Worked</th>   
+                  <th>Payable Amount</th> -->
+      </tr>
+    </thead>
+    Show Table
+    <tbody id="WorkingHours"> 
+    </tbody>
+  </table> 
+  <script defer src="main.dart.js"></script>
+</body>
+
+
+
 </html>
-
-
-
