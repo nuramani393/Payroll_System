@@ -1,80 +1,73 @@
 import 'dart:html';
+//import 'dart:ui';
 
 void main() {
-  // Initialize list with 22 empty slots
-  // List<int> hoursWorked = List.filled(22, 0);
+  // declare growable list
 
   // Get the form element and submit button
   var form = querySelector('form');
+
+  //list of map
+  List<Map<String, String>> dataList = [];
+
+  // Create a data object with the input values
+  Map<String, String> data = {
+    'date': '',
+    'start': '',
+    'end': '',
+    'duration': '',
+    'payment': ''
+  };
+
   form!.onSubmit.listen((event) {
     // Prevent the form from submitting
     event.preventDefault();
 
     // Get the input values
-    var dateValue = (querySelector('#start-date') as InputElement).value;
-    var startTimeValue = (querySelector('#start-time') as InputElement).value;
-    var endTimeValue = (querySelector('#end-time') as InputElement).value;
+    var dateValue = querySelector('#start-date') as InputElement;
+    var startTimeValue = querySelector('#start-time') as InputElement;
+    var endTimeValue = querySelector('#end-time') as InputElement;
 
-    // // Create a data object with the input values
-    // Map<String, String> data = {
-    //   'date': dateValue!,
-    //   'start-time': startTimeValue!,
-    //   'end-time': endTimeValue!
-    // };
+    data['date'] = dateValue.value!;
+    data['start'] = startTimeValue.value!;
+    data['end'] = endTimeValue.value!;
+
+    //Calculation to get duration of working hours
+    DateTime startTime = DateTime.parse('1970-01-01 ${data['start']}:00');
+    DateTime endTime = DateTime.parse('1970-01-01 ${data['end']}:00');
+    Duration duration = endTime.difference(startTime);
+    String durationStr = (duration.inSeconds / 3600).toStringAsFixed(2);
+    data['duration'] = durationStr;
+
+    //Calculation payment per day
+    // double paymentperday = double.parse(durationStr) * 6;
+    // data['payment'] = paymentperday.toString();
+
+    dataList.add(data);
 
     // Get the table body element
     var table = querySelector('#WorkingHours') as TableSectionElement;
     var newRow = table.insertRow(-1); // -1 means "insert at the end"
-    newRow.insertCell(0).text = dateValue;
-    newRow.insertCell(1).text = startTimeValue;
-    newRow.insertCell(2).text = endTimeValue;
+    newRow.insertCell(0).text = data['date']!;
+    newRow.insertCell(1).text = data['start']!;
+    newRow.insertCell(2).text = data['end']!;
+    newRow.insertCell(3).text = data['duration']!;
+    // newRow.insertCell(4).text = data['payment']!;
   });
-}
-    
 
-// Function to calculate hours worked from start time and end time
-// double calculateHoursWorked(String startTime, String endTime) {
-//   var start = DateTime.parse("2023-01-01 " + startTime);
-//   var end = DateTime.parse("2023-01-01 " + endTime);
-//   var duration = end.difference(start);
-//   return duration.inMinutes / 60.0;
-// }
+  //Calculation
 
-// Function to calculate payable amount from hours worked
-// double calculatePayableAmount(double hoursWorked) {
-//   return hoursWorked * 10.0; // Assuming $10 per hour
-// }
+  var buttonCalc = querySelector('#calcbutton') as ButtonElement;
 
-
-    // Calculate hours worked
-    // int startHour = int.parse(start!.split(':')[0]);
-    // int startMinute = int.parse(start.split(':')[1]);
-    // int endHour = int.parse(end!.split(':')[0]);
-    // int endMinute = int.parse(end.split(':')[1]);
-
-    // int minutesWorked =
-    //     (endHour * 60 + endMinute) - (startHour * 60 + startMinute);
-    // int hoursWorking = minutesWorked ~/ 60;
-
-    // // Update working hours list
-    // int index = getEmptySlotIndex(hoursWorked);
-    // if (index != -1) {
-    //   hoursWorked[index] = hoursWorking;
+  buttonCalc.onClick.listen((event) {
+    // var table = querySelector('#calc') as TableSectionElement;
+    //
+    //   var newRow = table.insertRow(-1);
+    //   newRow.insertCell(0).text = data[''];
+    //   newRow.insertCell(1).text = data['start'];
+    //   newRow.insertCell(2).text = data['end'];
     // }
+  });
 
-    // Calculate payable amount and EPF contribution
-    // double payableAmount = hoursWorking * 6;
-    // // double epfContribution = payableAmount * 0.11;
-
-
-    // // Add row to employee table
-    // TableRowElement row = workingHours.tBodies.first!.insertRow(-1);
-    // TableCellElement dateCell = row.insertCell(-1)..text = date;
-    // TableCellElement hoursWorkedCell = row.insertCell(-1)
-    //   ..text = hoursWorked.toString();
-    // TableCellElement payableAmountCell = row.insertCell(-1)
-    //   ..text = 'RM ' + payableAmount.toStringAsFixed(2);
-    // TableCellElement epfContributionCell = row.insertCell(-1)
-    //   ..text = 'RM ' + epfContribution.toStringAsFixed(2);
-  
-
+  // var outputDiv = querySelector('#output') as OutputElement;
+}

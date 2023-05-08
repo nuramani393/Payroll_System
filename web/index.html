@@ -11,7 +11,7 @@
     <script defer src="main.dart.js"></script>
 </head> 
 
-<body>
+<body onload="">
   <header>
   <h1>Payroll Management System</h1>
   </header>
@@ -26,22 +26,39 @@
     <br>
     <input type="submit" id="save" value="Save">
   </form>
+<div id="output"></div>
 
   <table>
     <thead>
       <tr>
                   <!-- <th>No</th> -->
                   <th>Date</th>
-                  <th>start-time</th>
-                  <th>end-time</th>
-                  <!-- <th>Hours Worked</th>   
-                  <th>Payable Amount</th> -->
+                  <th>Start-Time</th>
+                  <th>End-Time</th>
+                  <th>Hours Worked</th>   
+                  <th>Payable Amount</th>
       </tr>
     </thead>
-    Show Table
+    <!-- Show Table -->
     <tbody id="WorkingHours"> 
     </tbody>
   </table> 
+  <br> <br>
+  <button id="calcbutton">Calc</button>
+  
+   <table>
+    <thead>
+      <tr>
+                  <th>Hours Worked</th>   
+                  <th>Payable Amount</th>
+                  <th>Net Amount</th>
+                  <th>EPF Deduction</th>
+      </tr>
+    </thead>
+    <!-- Show Table -->
+    <tbody id="calc"> 
+    </tbody>
+  </table>  
   <script defer src="main.dart.js"></script>
 </body>
 
